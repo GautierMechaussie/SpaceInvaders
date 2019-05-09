@@ -1,61 +1,63 @@
 package fr.unilim.iut.spaceinvaders;
 
 public class Vaisseau {
-	int x;
-	int y;
-	int longueur;
-	int hauteur;
+	
+	Position origine;
+	Dimension dimension;
 
 	public Vaisseau(int longueur, int hauteur) {
 		this(longueur, hauteur, 0, 0);
 	}
 	
 	public Vaisseau(int longueur, int largeur, int x, int y) {
-		this.longueur=longueur;
-		this.hauteur=largeur;
-		this.x=x;
-		this.y=y;
+		this.dimension= new Dimension(longueur,largeur);
+		this.origine= new Position (x,y);
 	}
-
+	
+	public Vaisseau(Dimension dimension, Position positionOrigine) {
+	    this.dimension = dimension;
+	    this.origine = positionOrigine;
+    }
+	
 	public boolean occupeLaPosition(int x, int y) {
 	     return (estAbscisseCouverte(x) && estOrdonneeCouverte(y));
     }
 
-	private boolean estOrdonneeCouverte(int y) {
-		return (ordonneeLaPlusHaute()<=y) && (y<=ordonneeLaPlusBasse());
-	}
-
-	private int ordonneeLaPlusBasse() {
-		return this.y;
-	}
-
-	private int ordonneeLaPlusHaute() {
-		return ordonneeLaPlusBasse()-this.hauteur+1;
-	}
-
 	private boolean estAbscisseCouverte(int x) {
 		return (abscisseLaPlusAGAuche()<=x) && (x<=abscisseLaPlusADroite());
 	}
+	
+	private boolean estOrdonneeCouverte(int y) {
+		return (ordonneeLaPlusBasse()<=y) && (y<=ordonneeLaPlusHaute());
+	}
+
+	private int ordonneeLaPlusBasse() {
+		return this.origine.ordonnee() - this.dimension.hauteur() + 1;
+	}
+
+	private int ordonneeLaPlusHaute() {
+		return this.origine.ordonnee();
+	}
 
 	public int abscisseLaPlusADroite() {
-		return this.x+this.longueur-1;
+		return this.origine.abscisse()+this.dimension.longueur()-1;
 	}
 
-	public void seDeplacerVersLaDroite() {
-		this.x = this.x + 1;
+	public int abscisseLaPlusAGAuche() {
+        return this.origine.abscisse();
 	}
+	
+	public void seDeplacerVersLaDroite() {
+	    this.origine.changerAbscisse(this.origine.abscisse()+1);
+   }
 	
 	public void seDeplacerVersLaGauche() {
-		this.x = this.x - 1;
-	}
-	
-	public int abscisseLaPlusAGAuche() {
-        return this.x;
-	}
+	    this.origine.changerAbscisse(this.origine.abscisse()-1);
+  }
 	
 	public void positionner(int x, int y) {
-	    this.x = x;
-	    this.y = y;
+		  this.origine.changerAbscisse(x);
+		  this.origine.changerOrdonnee(y);
     }
 	
 }
