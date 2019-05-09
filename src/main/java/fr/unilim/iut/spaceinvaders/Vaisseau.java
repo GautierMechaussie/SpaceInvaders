@@ -22,7 +22,15 @@ public class Vaisseau {
     }
 
 	private boolean estOrdonneeCouverte(int y) {
-		return (this.y-this.hauteur+1<=y) && (y<=this.y);
+		return (ordonneeLaPlusHaute()<=y) && (y<=ordonneeLaPlusBasse());
+	}
+
+	private int ordonneeLaPlusBasse() {
+		return this.y;
+	}
+
+	private int ordonneeLaPlusHaute() {
+		return ordonneeLaPlusBasse()-this.hauteur+1;
 	}
 
 	private boolean estAbscisseCouverte(int x) {
