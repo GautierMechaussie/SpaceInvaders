@@ -1,8 +1,6 @@
- # Eclipse
-    /.classpath
-    /.project
-    /.settings/
+/.classpath
+/.project
+/.settings/
+/.gitignore
+/target/
 
-    # Maven
-    /target/
-   
