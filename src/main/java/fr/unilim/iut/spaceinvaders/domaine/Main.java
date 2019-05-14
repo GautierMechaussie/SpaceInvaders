@@ -1,4 +1,4 @@
-package fr.unilim.iut.spaceinvaders;
+package fr.unilim.iut.spaceinvaders.domaine;
 
 import fr.unilim.iut.spaceinvaders.moteurjeu.MoteurGraphique;
 
