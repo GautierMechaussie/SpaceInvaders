@@ -23,29 +23,19 @@ public class MoteurGraphique {
 	 */
 	private DessinJeu dessin;
 
-	/**
-	 * construit un moteur
-	 * 
-	 * @param pJeu
-	 *            jeu a lancer
-	 * @param pAffiche
-	 *            afficheur a utiliser
-	 */
+
 	public MoteurGraphique(Jeu pJeu, DessinJeu pAffiche) {
 		// creation du jeu
 		this.jeu = pJeu;
 		this.dessin = pAffiche;
 	}
 
-	/**
-	 * permet de lancer le jeu
-	 */
 	public void lancerJeu(int width, int height) throws InterruptedException {
 
 		// creation de l'interface graphique
 		this.gui = new InterfaceGraphique(this.dessin,width,height);
 		Controleur controle = this.gui.getControleur();
-
+		
 		// boucle de jeu
 		while (!this.jeu.etreFini()) {
 			// demande controle utilisateur
@@ -55,7 +45,7 @@ public class MoteurGraphique {
 			// affiche le jeu
 			this.gui.dessiner();
 			// met en attente
-			Thread.sleep(100);
+			Thread.sleep(16);
 		}
 	}
 
