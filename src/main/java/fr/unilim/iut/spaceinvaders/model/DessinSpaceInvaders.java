@@ -1,4 +1,4 @@
-package fr.unilim.iut.spaceinvaders.domaine;
+package fr.unilim.iut.spaceinvaders.model;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -18,8 +18,10 @@ public class DessinSpaceInvaders implements DessinJeu {
 	public void dessiner(BufferedImage im) {
 		if (this.jeu.aUnVaisseau()) {
 			Vaisseau vaisseau = this.jeu.recupererVaisseau();
+			Envahisseur envahisseur = this.jeu.recupererEnvahisseur();
 			
 			this.dessinerUnVaisseau(vaisseau, im);
+			this.dessinerUnEnvahisseur(envahisseur, im);
 			
 			if (this.jeu.aUnMissile()) {
 				Missile missile = this.jeu.recupererUnMissile();
@@ -43,5 +45,13 @@ public class DessinSpaceInvaders implements DessinJeu {
 		crayon.setColor(Color.blue);
 		crayon.fillRect(missile.abscisseLaPlusAGauche(), missile.ordonneeLaPlusBasse(), missile.longueur(),
 				missile.hauteur());
+	}
+	
+	public void dessinerUnEnvahisseur(Envahisseur envahisseur, BufferedImage im) {
+		Graphics2D crayon = (Graphics2D) im.getGraphics();
+
+		crayon.setColor(Color.green);
+		crayon.fillRect(envahisseur.abscisseLaPlusAGauche(), envahisseur.ordonneeLaPlusBasse(), envahisseur.longueur(),
+				envahisseur.hauteur());
 	}
 }
