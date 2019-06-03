@@ -128,6 +128,10 @@ public class SpaceInvaders implements Jeu {
 		return this.missile;
 	}
 
+	public void changerMissile(Missile missile) {
+		this.missile = missile;
+	}
+
 	
 	
 	
@@ -207,6 +211,9 @@ public class SpaceInvaders implements Jeu {
 		return this.envahisseur;
 	}
 	
+	public void changerEnvahisseur(Envahisseur envahisseur) {
+		this.envahisseur = envahisseur;
+	}
 
 
 	
@@ -242,6 +249,11 @@ public class SpaceInvaders implements Jeu {
 		
 		if (this.aUnEnvahisseur()) {
 			this.deplacementAutoEnvahisseur();
+		}
+		
+		if (Collision.detecterCollision(this)) {
+			this.envahisseur = null;
+			this.missile = null;
 		}
 	}
 
