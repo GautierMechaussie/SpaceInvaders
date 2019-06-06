@@ -34,7 +34,6 @@ public class Collision {
 	public static boolean envahisseurEtCoteGaucheDuMissileOntLaMemeAbscisse(SpaceInvaders spaceinvaders) {
 		return spaceinvaders.envahisseur.estAbscisseCouverte(spaceinvaders.missile.abscisseLaPlusAGauche());
 	}
-	
 
 	public static boolean envahisseurEtCoteDroitDuMissileOntLaMemeAbscisse(SpaceInvaders spaceinvaders) {
 		return spaceinvaders.envahisseur.estAbscisseCouverte(spaceinvaders.missile.abscisseLaPlusADroite());

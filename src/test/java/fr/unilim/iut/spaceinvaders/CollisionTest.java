@@ -30,6 +30,7 @@ public class CollisionTest {
 			spaceinvaders.deplacerMissile();
 			spaceinvaders.deplacerMissile();
 			spaceinvaders.deplacerMissile();
+			spaceinvaders.deplacerMissile();
 			   
 			if (Collision.detecterCollision(spaceinvaders)) {
 			   spaceinvaders.changerEnvahisseur(null);
